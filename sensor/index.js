@@ -1,13 +1,17 @@
-const sensor = require("node-dht-sensor").promises;
+const sensor = require('node-dht-sensor').promises;
 
-sensor.initialize({
+if(process.env.NODE_ENV=='development'){
+  
+  sensor.initialize({
     test: {
       fake: {
         temperature: Math.random(100),
-        humidity: Math.random(100)
+        humidity: Math.random(100.00)
       }
     }
 });
+}
+
 
 var temp;
 var humidity;
